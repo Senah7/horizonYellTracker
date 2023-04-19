@@ -81,7 +81,7 @@ if (storedQueries.Any())
     if(usePrev != null && usePrev.ToLower() == "y")
     {
         queries = storedQueries;
-        Console.WriteLine("Add more queries?");
+        Console.WriteLine("Add more queries? y/n");
         var addQueryInput = Console.ReadLine();
         if (addQueryInput != null && addQueryInput.ToLower() == "n") moreInput = false;
     }
