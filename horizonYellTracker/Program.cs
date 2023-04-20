@@ -265,7 +265,8 @@ while (true)
                 foundBaz = bazList.Where(b => formattedBazQueries.Any(i => Regex.Match(b.Name, i, RegexOptions.IgnoreCase).Success)).OrderBy(x => x.Bazaar).ToList();
                 var filterBaz = new HashSet<BazaarItem>(new BazaarItemComparer());
                 filterBaz.UnionWith(foundBaz);
-                var cheapest = filterBaz.Take(3);
+                var itemsToShow = filterBaz.Where(fb => !bazMatches.Any(b => fb.Charname == b.Charname && fb.Bazaar == b.Bazaar));
+                var cheapest = itemsToShow.Take(3).ToList();
                 if (DateTime.Now >= bazListStart.AddHours(1))
                 {
                     bazMatches = new HashSet<BazaarItem>(new BazaarItemComparer());
