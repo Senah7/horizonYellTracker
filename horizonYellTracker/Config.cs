@@ -11,9 +11,12 @@ namespace horizonYellTracker
         public Config()
         {
             Queries = new List<string>();
+            BazaarQueries = new List<string>();
         }
 
         public List<string> Queries { get; set; }
+        public List<string> BazaarQueries { get; set; }
         public string? Webhook { get; set; }
+        public string? DiscordUserId { get; set; }
     }
 }
