@@ -260,7 +260,7 @@ while (true)
             var foundBaz = new List<BazaarItem>();
             if (bazList != null && bazList.Any() && DateTime.Now >= bazLastChecked.AddMinutes(5))
             {
-                bazListStart = DateTime.Now;
+                bazLastChecked = DateTime.Now;
                 var formattedBazQueries = bazaarQueries.Select(i => i.Replace(" ", "_").Replace("\\s", "_"));
                 foundBaz = bazList.Where(b => formattedBazQueries.Any(i => Regex.Match(b.Name, i, RegexOptions.IgnoreCase).Success)).OrderBy(x => x.Bazaar).ToList();
                 var filterBaz = new HashSet<BazaarItem>(new BazaarItemComparer());
