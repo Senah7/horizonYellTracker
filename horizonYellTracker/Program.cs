@@ -273,21 +273,24 @@ while (true)
                     bazListStart = DateTime.Now;
                 }
                 bazMatches.UnionWith(cheapest);
-
-                Console.WriteLine("");
-                Console.WriteLine("Baazar query matches:");
-                foreach (var item in cheapest)
+                if (cheapest.Any())
                 {
-                    var itemString = $">>> [{item.Charname}](<https://horizonxi.com/players/{item.Charname}>) has **{textInfo.ToTitleCase(item.Name.Replace("_", " "))}**({item.Bazaar}g) listed in Bazaar.";
-                    Console.WriteLine(itemString);
-                    var payload = new
+                    Console.WriteLine("");
+                    Console.WriteLine("Baazar query matches:");
+                    foreach (var item in cheapest)
                     {
-                        username = "Bazaar Tracker",
-                        content = $"{itemString} {atUser}",
-                    };
-                    var contentToSend = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
-                    dClient.PostAsync(webhook, contentToSend).Wait();
+                        var itemString = $">>> [{item.Charname}](<https://horizonxi.com/players/{item.Charname}>) has **{textInfo.ToTitleCase(item.Name.Replace("_", " "))}**({item.Bazaar}g) listed in Bazaar.";
+                        Console.WriteLine(itemString);
+                        var payload = new
+                        {
+                            username = "Bazaar Tracker",
+                            content = $"{itemString} {atUser}",
+                        };
+                        var contentToSend = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+                        dClient.PostAsync(webhook, contentToSend).Wait();
+                    }
                 }
+                
             }
         }
     }
