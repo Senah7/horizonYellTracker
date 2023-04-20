@@ -8,3 +8,5 @@ A quick made console app to track yells matching your queries with a discord web
 - Bazaar updates include up to 3 new results. One result per unique item, which will be the cheapest found.
 
 ![image](https://user-images.githubusercontent.com/131304945/233270634-b03e6d6b-ec91-4c8e-8d05-9894fb7fa11c.png)
+
+![image](https://user-images.githubusercontent.com/131304945/233489017-a3b933bf-22d7-4f15-8223-b88bc693edd0.png)
